@@ -1,9 +1,10 @@
 :root {
-    --text: #0e0803;
+    --text: #000;
     --background: #fefcfb;
     --primary: #5ed99c;
     --secondary: #ffcc80;
     --accent: #8be284;
+    --white: #fff;
 
 }
 
