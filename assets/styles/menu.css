@@ -1,0 +1,199 @@
+ /* Top navbar */
+ .top-nav {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 10px 20px;
+     background-color: var(--primary);
+     color: #fff;
+ }
+
+ .top-nav .logo {
+     font-size: 1.5rem;
+     font-weight: bold;
+ }
+
+ .menu {
+     display: flex;
+     gap: 20px;
+ }
+
+ .menu a {
+     text-decoration: none;
+     color: #fff;
+     font-weight: bold;
+     padding: 8px;
+ }
+
+ .menu a:hover {
+     color: var(--text);
+     background-color: var(--background);
+     border-radius: 8px;
+ }
+
+ .hamburger {
+     display: none;
+     flex-direction: column;
+     gap: 5px;
+     cursor: pointer;
+ }
+
+ .hamburger div {
+     width: 25px;
+     height: 3px;
+     background-color: #fff;
+ }
+
+ /* Cross icon styles when the hamburger is clicked */
+ .hamburger.active div:nth-child(1) {
+     transform: rotate(45deg);
+     position: relative;
+     top: 8px;
+ }
+
+ .hamburger.active div:nth-child(2) {
+     opacity: 0;
+ }
+
+ .hamburger.active div:nth-child(3) {
+     transform: rotate(-45deg);
+     position: relative;
+     top: -8px;
+ }
+
+ .menu-dropdown {
+     display: none;
+     flex-direction: column;
+     gap: 10px;
+     background-color: var(--primary);
+     padding: 10px 20px;
+ }
+
+ .menu-dropdown a {
+     color: #fff;
+ }
+
+ /* Lower search bar */
+ .search-bar {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 15px;
+     padding: 15px 20px;
+     background-color: var(--secondary);
+     position: sticky;
+     top: 0;
+     z-index: 1000;
+ }
+
+ .search-bar input,
+ .search-bar select,
+ .search-bar button {
+     padding: 10px;
+     border: 1px solid var(--primary);
+     border-radius: 5px;
+     font-size: 1rem;
+ }
+
+ .search-bar input {
+     flex: 1;
+     min-width: 120px;
+ }
+
+ .search-bar select {
+     background-color: var(--background);
+     min-width: 100px;
+ }
+
+ .search-bar button {
+     background-color: var(--primary);
+     color: #fff;
+     cursor: pointer;
+ }
+
+ .search-bar button:hover {
+     background-color: var(--background);
+     color: var(--accent);
+ }
+
+ .icon-input {
+     display: flex;
+     align-items: center;
+     gap: 5px;
+ }
+
+ .icon-input i {
+     font-size: 1.2rem;
+     color: var(--text);
+ }
+
+ /* Advanced search fields (hidden by default) */
+ .advanced-search {
+     display: none;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 15px;
+     width: 100%;
+ }
+
+ /* Show the advanced search fields when the 'active' class is added */
+ .advanced-search.active {
+     display: grid;
+ }
+
+ .advanced-search select,
+ .advanced-search input {
+     width: 100%;
+ }
+
+ .checkbox-group {
+     display: flex;
+     gap: 10px;
+     flex-wrap: wrap;
+ }
+
+ .checkbox-group label {
+     display: flex;
+     gap: 5px;
+     align-items: center;
+ }
+
+ .search-bar .advanced-btn {
+     background-color: var(--background);
+     color: var(--primary);
+     cursor: pointer;
+     border: 1px solid var(--primary);
+     border-radius: 5px;
+     padding: 10px;
+ }
+
+ /* Responsive styles */
+ @media (max-width: 768px) {
+     .menu {
+         display: none;
+     }
+
+     .hamburger {
+         display: flex;
+     }
+
+     .menu-dropdown.active {
+         display: flex;
+     }
+
+     .search-bar {
+         display: none;
+         flex-direction: column;
+     }
+
+     .search-hamburger {
+         display: flex;
+     }
+
+     .search-bar.active {
+         display: flex;
+     }
+
+     .advanced-search {
+         grid-template-columns: repeat(1, 1fr);
+     }
+
+ }
