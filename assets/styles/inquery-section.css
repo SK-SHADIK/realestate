@@ -1,0 +1,125 @@
+.inquiry-section {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    position: relative;
+    background-color: var(--background);
+}
+
+.inquiry-section img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.inquiry-content {
+    flex: 1;
+    max-width: 500px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    z-index: 1;
+}
+
+.inquiry-content h2 {
+    font-size: 24px;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.inquiry-content p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+.inquiry-form {
+    flex: 1;
+    max-width: 600px;
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 10px 10px; /* Adjusted padding for better spacing */
+    font-size: 14px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.3s, padding-top 0.3s; /* Smooth transition for padding */
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary);
+    padding-top: 20px; /* Adjust padding to avoid overlapping */
+}
+
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 12px; /* Adjusted for better alignment */
+    font-size: 14px;
+    color: var(--input-border);
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    background: var(--white); /* Background color for better contrast */
+    padding: 0 4px; /* Padding for label to avoid overlap with the border */
+}
+
+.form-group input:focus~label,
+.form-group input:not(:placeholder-shown)~label,
+.form-group select:focus~label,
+.form-group select:not([value=""])~label {
+    top: 0;
+    left: 10px; /* Slightly inside the input border */
+    font-size: 12px;
+    color: var(--primary);
+}
+
+.inquiry-form button {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.inquiry-form button:hover {
+    background-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .inquiry-section {
+        flex-direction: column;
+    }
+
+    .inquiry-content {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
