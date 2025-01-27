@@ -1,4 +1,5 @@
 .services-container {
+    margin-top: 30px;
     background-color: var(--accent);
     display: grid;
     grid-template-columns: repeat(6, 1fr);
