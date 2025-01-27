@@ -1,4 +1,5 @@
 .better-section {
+    margin-top: 30px;
     position: relative;
     display: flex;
     flex-direction: column;

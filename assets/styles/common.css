@@ -5,6 +5,7 @@
     --secondary: #ffcc80;
     --accent: #8be284;
     --white: #fff;
+    --input-border: #ccc;
 
 }
 
@@ -13,4 +14,5 @@
     padding: 0;
     box-sizing: border-box;
     color: var(--text);
+    text-decoration: none;
 }
