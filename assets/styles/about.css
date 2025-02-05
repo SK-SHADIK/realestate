@@ -1,0 +1,255 @@
+.about-us {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.about-us-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-us-text {
+    flex: 1;
+}
+
+.about-us-text h1 {
+    font-size: 36px;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.about-us-text p {
+    font-size: 18px;
+    color: var(--outer-space);
+    line-height: 1.6;
+}
+
+.about-us-image {
+    flex: 1;
+    max-width: 100%;
+}
+
+.about-us-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Core Values Section */
+.values {
+    margin-top: 60px;
+}
+
+.values h2 {
+    font-size: 28px;
+    color: var(--primary);
+    margin-bottom: 40px;
+}
+
+.values-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.value-item {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.value-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.value-item h3 {
+    font-size: 24px;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.value-item p {
+    font-size: 16px;
+    color: var(--outer-space);
+    line-height: 1.5;
+}
+
+.value-icon {
+    margin-bottom: 20px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.value-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.value-item:hover .value-icon {
+    background-color: var(--secondary);
+}
+
+/* Meet the Team Section */
+.team {
+    margin-top: 60px;
+}
+
+.team h2 {
+    font-size: 28px;
+    color: var(--primary);
+    margin-bottom: 40px;
+}
+
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.team-member {
+    text-align: center;
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.team-member img {
+    width: 100%;
+    max-width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.team-member h3 {
+    font-size: 20px;
+    color: var(--primary);
+    margin-top: 15px;
+}
+
+.team-member p {
+    font-size: 16px;
+    color: var(--outer-space);
+}
+
+/* Achievements Section */
+.achievements {
+    margin-top: 60px;
+}
+
+.achievements h2 {
+    font-size: 28px;
+    color: var(--primary);
+    margin-bottom: 40px;
+}
+
+.achievements-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.achievement-item {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.achievement-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.achievement-item h3 {
+    font-size: 24px;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.achievement-item p {
+    font-size: 16px;
+    color: var(--outer-space);
+    line-height: 1.5;
+}
+
+/* Achievement Icon */
+.achievement-icon {
+    margin-bottom: 20px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.achievement-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .values-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .achievements-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .values-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .about-us-container {
+        flex-direction: column;
+    }
+
+    .about-us-text h1 {
+        font-size: 32px;
+    }
+
+    .about-us-text p {
+        font-size: 16px;
+    }
+
+    .team-container {
+        grid-template-columns: 1fr;
+    }
+
+    .achievements-container {
+        grid-template-columns: 1fr;
+    }
+}
