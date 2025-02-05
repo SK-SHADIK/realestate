@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real-Estate | About</title>
+    <title>Real-Estate | Contact</title>
     <link rel="stylesheet" href="../assets/styles/common.css">
     <link rel="stylesheet" href="../assets/styles/menu.css">
     <link rel="stylesheet" href="../assets/styles/slider-section.css">
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../assets/styles/testimonial-section.css">
     <link rel="stylesheet" href="../assets/styles/blog-section.css">
     <link rel="stylesheet" href="../assets/styles/about.css">
+    <link rel="stylesheet" href="../assets/styles/contact.css">
     <link rel="stylesheet" href="../assets/styles/footer.css">
 </head>
 
@@ -105,106 +106,49 @@
         </div>
     </div>
 
-    <section class="about-us">
-        <div class="about-us-container">
-            <div class="about-us-text">
-                <h1>About Us</h1>
-                <p>We are a leading real estate company committed to finding the perfect homes for our clients. Whether
-                    you're buying, selling, or renting, we are here to guide you every step of the way with expert
-                    advice and personalized service.</p>
-            </div>
-            <div class="about-us-image">
-                <img src="../assets/images/best.jpg" alt="Real Estate Image">
-            </div>
-        </div>
+    <!-- Contact Section -->
+    <div class="contact-form-section">
+        <h2>Get In Touch</h2>
+        <div class="contact-form-container">
+            <!-- Contact Form -->
+            <div class="contact-form-box">
+                <h3>Contact Us</h3>
+                <form action="#" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="tel" name="phone" placeholder="Your Phone" required>
 
-        <!-- Core Values Section -->
-        <div class="values">
-            <h2>Our Core Values</h2>
-            <div class="values-container">
-                <div class="value-item">
-                    <div class="value-icon">
-                        <img src="../assets/images/about/trust.png" alt="Trust Icon">
-                    </div>
-                    <h3>Trust</h3>
-                    <p>Our clients trust us to help them make the right real estate decisions, and we take that
-                        responsibility seriously.</p>
-                </div>
-                <div class="value-item">
-                    <div class="value-icon">
-                        <img src="../assets/images/about/excellence.png" alt="Excellence Icon">
-                    </div>
-                    <h3>Excellence</h3>
-                    <p>We strive for excellence in every aspect of our work, from customer service to finding the best
-                        property solutions.</p>
-                </div>
-                <div class="value-item">
-                    <div class="value-icon">
-                        <img src="../assets/images/about/commitment.png" alt="Commitment Icon">
-                    </div>
-                    <h3>Commitment</h3>
-                    <p>We are dedicated to achieving the best results for our clients, providing exceptional service
-                        throughout the entire process.</p>
-                </div>
-            </div>
-        </div>
+                    <!-- Inquiry Type Dropdown -->
+                    <select name="inquiry_type" required>
+                        <option value="" disabled selected>Select Inquiry Type</option>
+                        <option value="contact">General Contact</option>
+                        <option value="appointment">Schedule an Appointment</option>
+                        <option value="property">Property Inquiry</option>
+                        <option value="other">Other</option>
+                    </select>
 
-        <!-- Meet the Team Section -->
-        <div class="team">
-            <h2>Meet Our Team</h2>
-            <div class="team-container">
-                <div class="team-member">
-                    <img src="../assets/images/profile.jpg" alt="Team Member 1">
-                    <h3>Michael Johnson</h3>
-                    <p>CEO & Founder</p>
-                </div>
-                <div class="team-member">
-                    <img src="../assets/images/profile.jpg" alt="Team Member 2">
-                    <h3>Sarah Lee</h3>
-                    <p>Senior Agent</p>
-                </div>
-                <div class="team-member">
-                    <img src="../assets/images/profile.jpg" alt="Team Member 3">
-                    <h3>David Williams</h3>
-                    <p>Sales Manager</p>
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="contact-form-submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Info and Map -->
+            <div class="contact-form-info">
+                <h3>Our Office</h3>
+                <p><strong>Address:</strong> 123 Real Estate St, City, Country</p>
+                <p><strong>Phone:</strong> +123 456 789</p>
+                <p><strong>Email:</strong> contact@realestate.com</p>
+
+                <!-- Google Map Embed -->
+                <div class="contact-form-google-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.3171838068465!2d144.953735315318!3d-37.813627979751206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5be1fe1a77%3A0x19cc35fa588d5c27!2s123%20Real%20Estate%20St%2C%20Melbourne%2C%20VIC%203000!5e0!3m2!1sen!2sau!4v1608008950811!5m2!1sen!2sau"
+                        frameborder="0" style="border:0; width: 100%; height: 250px;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0"></iframe>
                 </div>
             </div>
         </div>
-
-        <!-- Achievements Section -->
-        <div class="achievements">
-            <h2>Our Achievements</h2>
-            <div class="achievements-container">
-                <div class="achievement-item">
-                    <div class="achievement-icon">
-                        <img src="../assets/images/about/trophy.png" alt="Award Icon">
-                    </div>
-                    <h3>Over 1000 Homes Sold</h3>
-                    <p>We've successfully helped our clients buy and sell over 1000 properties, ensuring complete
-                        satisfaction.</p>
-                </div>
-                <div class="achievement-item">
-                    <div class="achievement-icon">
-                        <img src="../assets/images/about/trophy.png" alt="Award Icon">
-                    </div>
-                    <h3>Top Real Estate Company of the Year</h3>
-                    <p>Our commitment to excellence has earned us the prestigious "Top Real Estate Company" award for 3
-                        consecutive years.</p>
-                </div>
-                <div class="achievement-item">
-                    <div class="achievement-icon">
-                        <img src="../assets/images/about/trophy.png" alt="Award Icon">
-                    </div>
-                    <h3>500+ Happy Clients</h3>
-                    <p>Our dedication to personalized service has earned us a loyal clientele of over 500 satisfied
-                        clients.</p>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-
+    </div>
 
     <footer class="footer-sections">
         <div class="footer-container">
