@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+    <style>
+        :root {
+            --text: #231805;
+            --background: #fdfaf4;
+            --primary: #e3982d;
+            --secondary: #cfef89;
+            --accent: #9fe959;
+            --black: #000;
+            --white: #fff;
+            --chinese-silver: #ccc;
+            --dark-charcoal: #333;
+            --gray-80: #ddd;
+            --dark-gray: #555;
+            --white-smoke: #f2f2f2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        .event-section {
+            background: var(--white-smoke);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .event-container {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            background: var(--white);
+            max-width: 600px;
+        }
+
+        .event-content {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .event-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .event-img:hover {
+            transform: scale(1.05);
+        }
+
+        .event-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .event-date {
+            font-size: 14px;
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+
+        .event-description {
+            font-size: 14px;
+            color: var(--dark-gray);
+        }
+
+        .event-form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .event-form-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid var(--chinese-silver);
+            border-radius: 5px;
+            outline: none;
+            background: transparent;
+        }
+
+        .event-form-label {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--white);
+            padding: 0 5px;
+            font-size: 16px;
+            color: var(--dark-charcoal);
+            transition: all 0.3s ease;
+        }
+
+        .event-form-input:focus+.event-form-label,
+        .event-form-input:not(:placeholder-shown)+.event-form-label {
+            top: 0;
+            font-size: 12px;
+            color: var(--primary);
+        }
+
+        .event-form-button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .event-form-button:hover {
+            /* background: var(--accent); */
+        }
+
+        .event-checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .event-form-checkbox {
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="event-section">
+        <div class="event-container">
+            <div class="event-content">
+                <img src="assets/images/card-1.jpg" alt="" class="event-img">
+                <h3 class="event-title">Pitha Utshob</h3>
+                <p class="event-date">February 22, 2025 (8:00 PM) <br> Dinner</p>
+                <p class="event-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis et molestias
+                    vero rem aliquid! Ullam illo tempora a voluptas ratione.</p>
+            </div>
+            <form action="" class="event-form">
+                <div class="event-form-group">
+                    <input type="text" name="name" id="name" class="event-form-input" placeholder=" " required>
+                    <label for="name" class="event-form-label">Full Name</label>
+                </div>
+                <div class="event-form-group">
+                    <input type="text" name="email" id="email" class="event-form-input" placeholder=" " required>
+                    <label for="email" class="event-form-label">Email</label>
+                </div>
+                <div class="event-form-group">
+                    <input type="text" name="phone_number" id="phone_number" class="event-form-input" placeholder=" "
+                        required>
+                    <label for="phone_number" class="event-form-label">Phone Number</label>
+                </div>
+                <div class="event-checkbox-group">
+                    <input type="checkbox" name="is_attend" id="is_attend" class="event-form-checkbox">
+                    <label for="is_attend" class="event-form-span"> I will attend this event</label>
+                </div>
+                <div class="event-form-group">
+                    <input type="text" name="member_count" id="member_count" class="event-form-input" placeholder=" "
+                        required>
+                    <label for="member_count" class="event-form-label">Members</label>
+                </div>
+                <button class="event-form-button" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Get the elements by their IDs
+        const phoneNumberInput = document.getElementById('phone_number');
+        const memberCountInput = document.getElementById('member_count');
+
+        // Function to restrict input to numbers only
+        function restrictToNumbers(event) {
+            const value = event.target.value;
+            // Only allow numbers
+            if (/\D/.test(value)) {
+                event.target.value = value.replace(/\D/g, ''); // Remove non-digit characters
+            }
+        }
+
+        // Add event listeners for both fields
+        phoneNumberInput.addEventListener('input', restrictToNumbers);
+        memberCountInput.addEventListener('input', restrictToNumbers);
+    </script>
+
+</body>
+
+</html>
