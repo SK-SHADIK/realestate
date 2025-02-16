@@ -10,344 +10,481 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
         }
 
-        /* Sidebar */
-        .sidebar {
-            width: 60px;
-            background: #222;
-            height: 100vh;
-            position: fixed;
-            top: 40px;
-            left: 0;
-            transition: width 0.3s;
-            overflow: hidden;
-            padding-top: 10px;
-        }
-
-        .sidebar.expanded {
-            width: 220px;
-        }
-
-        .sidebar ul {
-            list-style: none;
-        }
-
-        .sidebar li {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px;
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s;
-            position: relative;
-        }
-
-        .sidebar a {
-            text-decoration: none;
-            color: white;
-            display: flex;
-            align-items: center;
-            width: 100%;
-        }
-
-        .sidebar li:hover {
-            background: #333;
-        }
-
-        .sidebar span:first-child {
-            margin-right: 10px;
-        }
-
-        .sidebar span:last-child {
-            display: none;
-        }
-
-        .sidebar.expanded span:last-child {
-            display: inline;
-        }
-
-        /* Dropdown Menu */
-        .dropdown-menu {
-            display: none;
-            flex-direction: column;
-            background: #333;
-            border-left: 3px solid #444;
-            padding-left: 10px;
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 10px 15px;
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            transition: background 0.3s;
-        }
-
-        .dropdown-menu a:hover {
-            background: #444;
-        }
-
-        .dropdown-open {
-            display: flex;
-        }
-
-        /* Top Navbar */
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background: #111;
-            color: white;
+        /* Top Bar */
+        .top-bar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
+            height: 50px;
+            background: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
             z-index: 1000;
         }
 
-        .topbar-left {
+        /* Hamburger Menu */
+        .menu-toggle {
+            cursor: pointer;
+            width: 20px;
+            height: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            border: none;
+        }
+
+        .menu-toggle div {
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            transition: all 0.3s;
+        }
+
+        .menu-toggle.active div:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .menu-toggle.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active div:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .project-container {
             display: flex;
             align-items: center;
         }
 
         .project-name {
-            font-size: 18px;
+            transition: width 0.3s;
+            white-space: nowrap;
+            overflow: hidden;
             margin-right: 10px;
-            font-weight: bold;
         }
 
-        .hamburger {
+        .project-name.short {
+            width: auto;
+        }
+
+        .project-name.full {
+            display: none;
+        }
+
+        .expanded .project-name.short {
+            display: none;
+        }
+
+        .expanded .project-name.full {
+            display: inline;
+        }
+
+        /* Admin Dropdown */
+        .admin-menu {
+            position: relative;
             cursor: pointer;
-            width: 25px;
-            height: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            margin-left: 10px;
         }
 
-        .bar {
-            width: 100%;
-            height: 3px;
+        .admin-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
             background: white;
-            transition: 0.3s;
+            color: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            width: 200px;
+            padding: 10px;
+            z-index: 1000;
         }
 
-        .hamburger.active .bar:nth-child(1) {
-            transform: rotate(45deg) translateY(7px);
+        .admin-dropdown a {
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
         }
 
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
+        .admin-dropdown a:hover {
+            background: #ddd;
         }
 
-        .hamburger.active .bar:nth-child(3) {
-            transform: rotate(-45deg) translateY(-7px);
+        /* Left Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 50px;
+            left: 0;
+            height: 100vh;
+            background: #222;
+            width: 60px;
+            transition: width 0.3s;
+            overflow: hidden;
+            z-index: 900;
         }
 
+        .sidebar.expanded {
+            width: 200px;
+        }
+
+        .menu-item {
+            color: white;
+            padding: 15px;
+            gap: 10px;
+            cursor: pointer;
+            position: relative;
+            align-items: center;
+        }
+
+        .menu-item:hover,
+        .menu-item.active {
+            background: #444;
+        }
+
+        .menu-text {
+            display: none;
+        }
+
+        .sidebar.expanded .menu-text {
+            display: inline;
+        }
+
+        /* Submenu Item - Align icon and text */
+        .submenu-item {
+            display: flex;
+            align-items: center;
+            color: white;
+            padding: 10px;
+            gap: 10px;
+        }
+
+        .submenu-item:hover {
+            background: #444;
+        }
+
+        /* Dropdown Menu */
+        .submenu {
+            display: none;
+            background: #333;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .menu-item.expanded .submenu {
+            display: block;
+        }
+
+        /* Body Content */
         .main-content {
             margin-left: 60px;
-            margin-top: 60px;
+            /* Space for the sidebar */
             padding: 20px;
             transition: margin-left 0.3s;
+            margin-top: 50px;
+            /* Space for top bar */
         }
 
-        .sidebar.expanded~.main-content {
-            margin-left: 220px;
+        .sidebar.expanded+.main-content {
+            margin-left: 200px;
+            /* Adjust for expanded sidebar */
         }
 
-        /* Topbar Settings Dropdown */
-        .topbar-right {
+        .container {
+            max-width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .table-header .left {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .table-header .right {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .table-header button,
+        .table-header select,
+        .table-header input {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .table-header button {
+            background: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .table-header button:hover {
+            background: #0056b3;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+        }
+
+        .toggle-btn {
+            width: 40px;
+            height: 20px;
+            background: #ccc;
+            border-radius: 20px;
             position: relative;
             cursor: pointer;
         }
 
-        .settings-dropdown {
-            display: none;
+        .toggle-btn::before {
+            content: "";
             position: absolute;
-            top: 40px;
-            right: 0;
-            background: #333;
-            border: 1px solid #444;
-            width: 120px;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            top: 1px;
+            left: 2px;
+            transition: 0.3s;
         }
 
-        .settings-dropdown a {
-            display: block;
-            padding: 10px;
+        .toggle-btn.active {
+            background: #28a745;
+        }
+
+        .toggle-btn.active::before {
+            left: 20px;
+        }
+
+        .actions button {
+            padding: 5px 10px;
+            margin: 2px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .edit-btn {
+            background: #ffc107;
+        }
+
+        .delete-btn {
+            background: #dc3545;
             color: white;
-            text-decoration: none;
-            font-size: 14px;
-            transition: background 0.3s;
         }
 
-        .settings-dropdown a:hover {
-            background: #444;
+        .view-btn {
+            background: #17a2b8;
+            color: white;
         }
 
-        .dropdown-visible {
-            display: block;
-        }
-
-        /* Dashboard Cards */
-        .dashboard-cards {
+        .pagination {
             display: flex;
-            gap: 20px;
-            margin-top: 20px;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
         }
 
-        .card {
-            background: #333;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 220px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .pagination select {
+            padding: 5px;
+            border: 1px solid #ccc;
         }
 
-        .card .card-title {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .card .card-count {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        /* Analytics Section */
-        .analytics {
-            margin-top: 40px;
-            background: #444;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .analytics h3 {
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        .report-cards {
+        .pagination .pages {
             display: flex;
-            gap: 20px;
+            gap: 5px;
         }
 
-        .report-card {
-            background: #555;
+        .pagination button {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            background: white;
+            cursor: pointer;
+        }
+
+        .pagination button.active {
+            background: #007bff;
             color: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 250px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .report-card .report-title {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .report-card .report-value {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 10px;
         }
     </style>
 </head>
 
 <body>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <ul>
-            <li><a href="#"><span>🏠</span><span>Dashboard</span></a></li>
-            <li onclick="toggleDropdownMenu('projects-dropdown')">
-                <span>📂</span><span>Projects ▼</span>
-            </li>
-            <ul class="dropdown-menu" id="projects-dropdown">
-                <li><a href="#">Project 1</a></li>
-                <li><a href="#">Project 2</a></li>
-                <li><a href="#">Project 3</a></li>
-            </ul>
-            <li onclick="toggleDropdownMenu('team-dropdown')">
-                <span>👥</span><span>Team ▼</span>
-            </li>
-            <ul class="dropdown-menu" id="team-dropdown">
-                <li><a href="#">Team Member 1</a></li>
-                <li><a href="#">Team Member 2</a></li>
-                <li><a href="#">Team Member 3</a></li>
-            </ul>
-            <li><a href="#"><span>⚙️</span><span>Settings</span></a></li>
-        </ul>
+    <div class="top-bar">
+        <div class="project-container">
+            <span class="project-name short">AP</span>
+            <span class="project-name full">Admin Panel</span>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="admin-menu" onclick="toggleAdminDropdown(event)">
+            Admin
+            <div class="admin-dropdown">
+                <a href="#">Settings</a>
+                <a href="#">Change Password</a>
+                <a href="#">Profile</a>
+                <a href="#">Logout</a>
+            </div>
+        </div>
     </div>
 
-    <!-- Main Content -->
+    <div class="sidebar" id="sidebar">
+        <div class="menu-item" onclick="toggleSidebarDropdown(this)">
+            📂 <span class="menu-text">Dashboard</span>
+        </div>
+        <div class="menu-item" onclick="toggleSidebarDropdown(this)">
+            📑 <span class="menu-text">Reports</span>
+            <div class="submenu">
+                <div class="submenu-item">🔁 <span class="menu-text">Report 1</span></div>
+                <div class="submenu-item">🔁 <span class="menu-text">Report 2</span></div>
+            </div>
+        </div>
+        <div class="menu-item" onclick="toggleSidebarDropdown(this)">
+            👥 <span class="menu-text">Users</span>
+            <div class="submenu">
+                <div class="submenu-item">👤 <span class="menu-text">User 1</span></div>
+                <div class="submenu-item">👤 <span class="menu-text">User 2</span></div>
+            </div>
+        </div>
+        <div class="menu-item" onclick="toggleSidebarDropdown(this)">
+            💬 <span class="menu-text">Messages</span>
+            <div class="submenu">
+                <div class="submenu-item">✉️ <span class="menu-text">Message 1</span></div>
+                <div class="submenu-item">✉️ <span class="menu-text">Message 2</span></div>
+            </div>
+        </div>
+        <div class="menu-item" onclick="toggleSidebarDropdown(this)">
+            ⚙️ <span class="menu-text">Settings</span>
+        </div>
+    </div>
+
     <div class="main-content">
-        <!-- Top Navbar -->
-        <div class="topbar">
-            <div class="topbar-left">
-                <div class="project-name" id="project-name" data-full="Project Name" data-short="PN">PN</div>
-                <div class="hamburger" onclick="toggleMenu()">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
+        <div class="container">
+            <!-- Table Header -->
+            <div class="table-header">
+                <div class="left">
+                    <button onclick="createRecord()">+ Create</button>
+                    <input type="text" id="search" placeholder="Search..." oninput="filterTable()">
+                    <button onclick="filterTable()">Search</button>
+                </div>
+                <div class="right">
+                    <select id="filter" onchange="filterTable()">
+                        <option value="">Filter Options</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                    <button onclick="exportData()">Export</button>
                 </div>
             </div>
-            <!-- Topbar Right (Settings Dropdown) -->
-            <div class="topbar-right">
-                <div class="profile-menu" onclick="toggleSettingsDropdown()">
-                    ⚙️
-                </div>
-                <div class="settings-dropdown" id="settings-dropdown">
-                    <a href="#">Settings</a>
-                    <a href="#">Profile</a>
-                    <a href="#">Logout</a>
-                </div>
-            </div>
-        </div>
 
-        <!-- Dashboard Cards -->
-        <div class="dashboard-cards">
-            <div class="card">
-                <div class="card-title">Users</div>
-                <div class="card-count">1,245</div>
-                <div class="card-footer">Active Users</div>
+            <!-- Table Container -->
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox"></th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>John Doe</td>
+                            <td>john@example.com</td>
+                            <td>
+                                <div class="toggle-btn" onclick="toggleStatus(this)"></div>
+                            </td>
+                            <td class="actions">
+                                <button class="edit-btn">Edit</button>
+                                <button class="view-btn">Show</button>
+                                <button class="delete-btn">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>Jane Smith</td>
+                            <td>jane@example.com</td>
+                            <td>
+                                <div class="toggle-btn active" onclick="toggleStatus(this)"></div>
+                            </td>
+                            <td class="actions">
+                                <button class="edit-btn">Edit</button>
+                                <button class="view-btn">Show</button>
+                                <button class="delete-btn">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="card">
-                <div class="card-title">Sales</div>
-                <div class="card-count">$15,000</div>
-                <div class="card-footer">Total Sales</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Orders</div>
-                <div class="card-count">230</div>
-                <div class="card-footer">Pending Orders</div>
-            </div>
-        </div>
 
-        <!-- Report Analytics -->
-        <div class="analytics">
-            <h3>Report Analytics</h3>
-            <div class="report-cards">
-                <div class="report-card">
-                    <div class="report-title">Monthly Revenue</div>
-                    <div class="report-value">$5,000</div>
+            <!-- Pagination -->
+            <div class="pagination">
+                <div>
+                    Show <select>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>30</option>
+                        <option>50</option>
+                        <option>100</option>
+                    </select> entries
                 </div>
-                <div class="report-card">
-                    <div class="report-title">New Users</div>
-                    <div class="report-value">350</div>
-                </div>
-                <div class="report-card">
-                    <div class="report-title">Orders Completed</div>
-                    <div class="report-value">150</div>
+                <div class="pages">
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>Next</button>
                 </div>
             </div>
         </div>
@@ -355,31 +492,63 @@
 
     <script>
         function toggleMenu() {
-            const sidebar = document.querySelector('.sidebar');
-            const hamburger = document.querySelector('.hamburger');
-            const projectName = document.getElementById('project-name');
-
-            sidebar.classList.toggle('expanded');
-            hamburger.classList.toggle('active');
-            projectName.textContent = sidebar.classList.contains('expanded') ? projectName.getAttribute('data-full') : projectName.getAttribute('data-short');
+            document.getElementById('sidebar').classList.toggle('expanded');
+            document.querySelector('.project-container').classList.toggle('expanded');
+            document.querySelector('.menu-toggle').classList.toggle('active');
         }
 
-        function toggleDropdownMenu(menuId) {
-            document.querySelectorAll(".dropdown-menu").forEach(menu => {
-                if (menu.id !== menuId) menu.classList.remove('dropdown-open');
-            });
-            document.getElementById(menuId).classList.toggle('dropdown-open');
+        function toggleSidebarDropdown(el) {
+            const allDropdowns = document.querySelectorAll(".submenu");
+            allDropdowns.forEach(dropdown => dropdown.style.display = "none");
+
+            const submenu = el.querySelector(".submenu");
+            if (submenu) {
+                submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+            }
+
+            el.classList.toggle("expanded");
         }
 
-        function toggleSettingsDropdown() {
-            document.getElementById("settings-dropdown").classList.toggle("dropdown-visible");
+        function toggleAdminDropdown(event) {
+            event.stopPropagation();
+            const dropdown = event.currentTarget.querySelector(".admin-dropdown");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
         }
 
         document.addEventListener("click", function (event) {
-            if (!event.target.closest(".topbar-right")) {
-                document.getElementById("settings-dropdown").classList.remove("dropdown-visible");
+            const adminMenu = document.querySelector(".admin-menu");
+            const dropdown = document.querySelector(".admin-dropdown");
+
+            if (adminMenu && !adminMenu.contains(event.target)) {
+                dropdown.style.display = "none";
             }
         });
+
+        document.addEventListener("click", function (event) {
+            const sidebar = document.querySelector(".sidebar");
+            if (!sidebar.contains(event.target)) {
+                const expandedItems = sidebar.querySelectorAll(".menu-item.expanded");
+                expandedItems.forEach(item => item.classList.remove("expanded"));
+                const allDropdowns = sidebar.querySelectorAll(".submenu");
+                allDropdowns.forEach(dropdown => dropdown.style.display = "none");
+            }
+        });
+
+        function toggleStatus(el) {
+            el.classList.toggle('active');
+        }
+
+        function filterTable() {
+            alert("Filtering data...");
+        }
+
+        function createRecord() {
+            alert("Create new record...");
+        }
+
+        function exportData() {
+            alert("Exporting data...");
+        }
     </script>
 
 </body>
