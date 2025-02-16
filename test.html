@@ -1,39 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Blog Section</title>
+    <title>Glassmorphic Table</title>
     <style>
-        :root {
-            --text: #000;
-            --background: #fefcfb;
-            --primary: #5ed99c;
-            --secondary: #ffcc80;
-            --accent: #8be284;
-            --white: #fff;
-            --input-border: #ccc;
-            --red: #ff0000;
-            --darkred: #8b0000;
-            --bright-yellow: #f9a826;
-            --carrot-orange: #d88c1b;
-            --outer-space: #444444;
-        }
-
         body {
             font-family: Arial, sans-serif;
-            background-color: var(--background);
-            color: var(--text);
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 20px;
         }
 
-        
+        .table-container {
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #333;
+        }
+
+        th,
+        td {
+            padding: 12px 20px;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.8);
+            font-weight: bold;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        tr {
+            transition: 0.3s;
+        }
+
+        tr:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        td {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+
+            th,
+            td {
+                padding: 10px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-    
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>28</td>
+                    <td>USA</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jane Smith</td>
+                    <td>24</td>
+                    <td>UK</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Michael Brown</td>
+                    <td>30</td>
+                    <td>Canada</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Emily Davis</td>
+                    <td>27</td>
+                    <td>Germany</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </body>
+
 </html>
